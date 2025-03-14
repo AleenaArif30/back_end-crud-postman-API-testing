@@ -14,9 +14,9 @@ mongoose.connection.on("error", () => {
 })
 
 const app = express()
-const port = 6000
-//192.168.2.11:5000
-app.use("api", userRoutes)
+const port = 5000
+//192.168.20.136:5000
+app.use("/api", userRoutes)
 
 app.use(express.json()); // Add this line to handle JSON bodies
 
@@ -28,15 +28,20 @@ app.get('/', (req, res) => {
 })
 
 
-
-//By using postmen check API
-
 //middleware koi bhi req ayegi phle wo ise hokr guzre gi
 app.use("/", (req, res, next) => {
   console.log("Request URL", req.url, "method", req.method)
   next()
 })
 
+
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+
+//By using postmen check API
 // let users = [] // user data isme store hoga jb postman pr testing hogi agr database ni hoga tu 
 
 
@@ -125,6 +130,3 @@ app.use("/", (req, res, next) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})

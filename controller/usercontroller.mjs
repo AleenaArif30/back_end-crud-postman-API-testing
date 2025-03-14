@@ -2,6 +2,7 @@ import User from "../models/database_schema/index.mjs";
 // import joi from "joi"
 // import schema from "../schema/joi_validation.mjs";
 
+// import chalk from "chalk"
 
 
 
@@ -12,7 +13,7 @@ const createUser = async (req, res) => {
     // Validate the request body using Joi
     // await schema.validateAsync(req.body);
 
-    const { email } = req.body;
+    const {email} = req.body;
 
     // Check if the email already exists in the database
     const existingUser = await User.findOne({ email });
